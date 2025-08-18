@@ -25,11 +25,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MeuStatelessWidget extends StatelessWidget {
+class MeuStatelessWidget extends StatefulWidget {
   const MeuStatelessWidget({super.key});
+
+  @override
+  State<MeuStatelessWidget> createState() => _MeuStatelessWidgetState();
+}
+
+class _MeuStatelessWidgetState extends State<MeuStatelessWidget> {
+  int count = 0;
+
   @override
   Widget build(BuildContext context) {
-    int count = 0;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,9 +53,43 @@ class MeuStatelessWidget extends StatelessWidget {
         SizedBox(height: 16,),
         ElevatedButton(
           onPressed: () {
-            count++;
+            setState(() {
+              count++;
+            });
           }, 
           child: Text("Clique aqui"),
+        ),
+        MeuStateFulWidget(
+          callback: () {
+            setState(() {
+              count++;
+            });
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class MeuStateFulWidget extends StatefulWidget {
+  final void Function() callback;
+
+  const MeuStateFulWidget({super.key, required this.callback});
+
+  @override
+  State<MeuStateFulWidget> createState() => _MeuStateFulWidgetState();
+}
+
+class _MeuStateFulWidgetState extends State<MeuStateFulWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            widget.callback();
+          }, 
+          child: Text("2º Button"),
         )
       ],
     );
