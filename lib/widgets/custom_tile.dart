@@ -6,6 +6,7 @@ class CustomTile extends StatelessWidget {
   final Widget title;
   final Widget subTitle;
   final Widget trailing;
+  final void Function() onTap;
 
   const CustomTile({
     super.key,
@@ -14,41 +15,47 @@ class CustomTile extends StatelessWidget {
     required this.title,
     required this.subTitle,
     required this.trailing,
+    required this.onTap
   });
 
   @override
   Widget build(BuildContext context) {
     final gap = SizedBox(height: 8, width: 18,);
 
-    return Container(
-      padding: EdgeInsets.all(16),
-      margin: EdgeInsets.all(3),
-      decoration: BoxDecoration(
-        color: color, 
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              leading,
-              gap,
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  title,
-                  gap,
-                  subTitle,
-                ],
-              ),
-            ],
-          ),
-          trailing
-        ],
+    return GestureDetector(
+      onTap: () {
+        onTap();
+      },
+      child: Container(
+        padding: EdgeInsets.all(16),
+        margin: EdgeInsets.all(3),
+        decoration: BoxDecoration(
+          color: color, 
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                leading,
+                gap,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    title,
+                    gap,
+                    subTitle,
+                  ],
+                ),
+              ],
+            ),
+            trailing
+          ],
+        ),
       ),
     );
   }
