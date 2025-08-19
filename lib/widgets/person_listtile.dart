@@ -15,7 +15,7 @@ class PersonListTile extends StatelessWidget {
       child: ListTile(
         leading: Text("ID: ${person.id}"),
         title: Text("Nome: ${person.nome}"),
-        subtitle: Text("Peso: ${person.peso} kg"),
+        subtitle: Text("Peso: ${person.peso.toStringAsFixed(2)} kg"),
         trailing: Text("Altura: ${person.altura} cm"),
       ),
     );
