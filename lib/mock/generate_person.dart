@@ -10,7 +10,7 @@ List<Person> generatePerson(int quantidade) {
     (index) => Person(
       id: index + 1, 
       nome: faker.person.name(), 
-      altura: Random().nextInt(200), 
+      altura: faker.randomGenerator.integer(210, min: 150), 
       peso: faker.randomGenerator.decimal(min: 50, scale: 100)
     ),
   );

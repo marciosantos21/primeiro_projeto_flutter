@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_projeto_flutter/mock/generate_person.dart';
 import 'package:primeiro_projeto_flutter/models/person.dart';
+import 'package:primeiro_projeto_flutter/widgets/custom_person_tile.dart';
 import 'package:primeiro_projeto_flutter/widgets/person_listtile.dart';
 
 class PersonList extends StatelessWidget {
@@ -13,7 +14,8 @@ class PersonList extends StatelessWidget {
     return ListView.builder(
       itemCount: person.length,
       itemBuilder: (context,  index) {
-        return PersonListTile(person: person[index]);
+        // return PersonListTile(person: person[index]);
+        return CustomPersonTile(person: person[index]);
       },
     );
   }
