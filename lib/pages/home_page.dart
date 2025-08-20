@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
-import 'package:primeiro_projeto_flutter/pages/new_page.dart';
+// import 'package:primeiro_projeto_flutter/pages/create_person_page.dart';
 import 'package:primeiro_projeto_flutter/routes/routes.dart';
 import 'package:primeiro_projeto_flutter/widgets/listview_builder.dart';
 
@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 203, 232, 255),
         onPressed: () {
           // Navigator.of(context).pushNamed(Routes.newPage);
-          context.pushNamed(Routes.newPage);
+          context.pushNamed(Routes.createPersonPage);
           // Navigator.of(context).pushAndRemoveUntil(
           //   MaterialPageRoute(
           //     builder: (context) {
