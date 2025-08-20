@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:faker/faker.dart' hide Person;
 import 'package:primeiro_projeto_flutter/models/person.dart';
 
