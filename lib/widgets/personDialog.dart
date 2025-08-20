@@ -13,20 +13,57 @@ class PersonDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final gap = SizedBox(height: 8, width: 15,);
+    final gapHeight = SizedBox(height: 8);
 
     return AlertDialog(
+      actions: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ElevatedButton(
+              onPressed: () { 
+                Navigator.of(context).pop();
+              }, 
+              child: Text(
+                "Visualizar",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              style: ElevatedButton.styleFrom( 
+                backgroundColor: Colors.blueAccent, 
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () { 
+                Navigator.of(context).pop();
+              }, 
+              child: Text(
+                "Fechar",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              style: ElevatedButton.styleFrom( 
+                backgroundColor: Colors.red[300], 
+              ),
+            ),
+          ],
+        ),
+      ],
       content: IntrinsicHeight(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [                
+            Text(
+              "Informações do usuario",
+              style: TextStyle(color: Colors.black),
+            ),
+            gapHeight,
             DefaultDialogContainer(child: Text("ID: ${person.id}"),),
             DefaultDialogContainer(child: Text("Nome: ${person.nome}"),),
             DefaultDialogContainer(child: Text("Peso: ${person.peso.toPeso()}"),),
             DefaultDialogContainer(child: Text("Altura: ${person.altura.toAltura()}"),),
-            // Text("Nome: ${person.nome}"),
-            // Text("Peso: ${person.peso.toPeso()}"),
-            // Text("Altura: ${person.altura.toAltura()}"),
           ],
         ),
       ),

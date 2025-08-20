@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         textTheme: TextTheme(
           bodyMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          titleMedium: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold)
-        )
+          titleMedium: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
+        ),
       ),
       home: Scaffold(
         appBar: AppBar(

@@ -16,6 +16,7 @@ class CustomPersonTile extends StatelessWidget {
         // print("Clicando no ID: ${person.id}");
         showDialog(
           context: context, 
+          barrierDismissible: false,
           builder: (context) {
             return PersonDialog(person: person,);
           },
