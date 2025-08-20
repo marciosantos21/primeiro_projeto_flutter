@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
 import 'package:primeiro_projeto_flutter/models/person.dart';
+import 'package:primeiro_projeto_flutter/widgets/default_dialog_container.dart';
 
 class PersonDialog extends StatelessWidget {
   final Person person;
@@ -16,17 +17,16 @@ class PersonDialog extends StatelessWidget {
 
     return AlertDialog(
       content: IntrinsicHeight(
-        child: Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [                
-                Text("ID: ${person.id}"),
-                Text("Nome: ${person.nome}"),
-                Text("Peso: ${person.peso.toPeso()}"),
-                Text("Altura: ${person.altura.toAltura()}"),
-              ],
-            ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [                
+            DefaultDialogContainer(child: Text("ID: ${person.id}"),),
+            DefaultDialogContainer(child: Text("Nome: ${person.nome}"),),
+            DefaultDialogContainer(child: Text("Peso: ${person.peso.toPeso()}"),),
+            DefaultDialogContainer(child: Text("Altura: ${person.altura.toAltura()}"),),
+            // Text("Nome: ${person.nome}"),
+            // Text("Peso: ${person.peso.toPeso()}"),
+            // Text("Altura: ${person.altura.toAltura()}"),
           ],
         ),
       ),
