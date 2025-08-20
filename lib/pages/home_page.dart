@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
 import 'package:primeiro_projeto_flutter/pages/new_page.dart';
+import 'package:primeiro_projeto_flutter/routes/routes.dart';
 import 'package:primeiro_projeto_flutter/widgets/listview_builder.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,14 +17,16 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 203, 232, 255),
         onPressed: () {
-          Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) {
-                return NewPage();
-              },
-            ),
-            (route) => false,
-          );
+          // Navigator.of(context).pushNamed(Routes.newPage);
+          context.pushNamed(Routes.newPage);
+          // Navigator.of(context).pushAndRemoveUntil(
+          //   MaterialPageRoute(
+          //     builder: (context) {
+          //       return NewPage();
+          //     },
+          //   ),
+          //   (route) => false,
+          // );
         },
         child: Icon(
           Icons.navigate_next,

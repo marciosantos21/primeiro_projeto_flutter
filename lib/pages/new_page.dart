@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
 
 class NewPage extends StatelessWidget {
   const NewPage({super.key});
@@ -12,7 +13,7 @@ class NewPage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            context.pop();
           }, 
           child: Text("Voltar")
         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:primeiro_projeto_flutter/pages/home_page.dart';
+// import 'package:primeiro_projeto_flutter/pages/home_page.dart';
+import 'package:primeiro_projeto_flutter/routes/router.dart';
+import 'package:primeiro_projeto_flutter/routes/routes.dart';
 // import 'package:primeiro_projeto_flutter/models/person.dart';
 // import 'package:primeiro_projeto_flutter/widgets/listview_builder.dart';
 // import 'package:primeiro_projeto_flutter/widgets/person_listtile.dart';
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: Routes.initialRoute,
+      routes: routes,
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: false,
@@ -23,7 +27,7 @@ class MyApp extends StatelessWidget {
           titleMedium: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
         ),
       ),
-      home: HomePage(),
+      // home: HomePage(),
     );
   }
 }
