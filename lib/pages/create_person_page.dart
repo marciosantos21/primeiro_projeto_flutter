@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
 import 'package:primeiro_projeto_flutter/models/create_person_dto.dart';
 
@@ -25,11 +26,12 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
-          autovalidateMode: AutovalidateMode.always,
           key: formKey,
           child: Column(
             children: [
               TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                style: TextStyle(color: Colors.black),
                 validator: (value) {
                   if(value?.isEmpty == true){
                     return "Por favor, preencha o nome";
@@ -45,6 +47,12 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
               ),
               gap,
               TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                style: TextStyle(color: Colors.black),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(RegExp(r'^\d+[.]?\d{0,2}'))
+                ],
                 validator: (value) {
                   if(value?.isEmpty == true){
                     return "Por favor, preencha o peso";
@@ -55,11 +63,18 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                 controller: pesoController,
                 decoration: InputDecoration(
                   label: Text("Peso"),
-                  border: OutlineInputBorder()
+                  border: OutlineInputBorder(),
+                  suffixText: "Kg",
                 ),
               ),
               gap,
               TextFormField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
+                style: TextStyle(color: Colors.black),
                 validator: (value) {
                   if(value?.isEmpty == true){
                     return "Por favor, preencha o altura";
@@ -71,6 +86,7 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                 decoration: InputDecoration(
                   label: Text("Altura"),
                   border: OutlineInputBorder(),
+                  suffixText: "Cm",
                 ),
               ),
               gap,
@@ -98,5 +114,14 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    nomeController.dispose();
+    alturaController.dispose();
+    pesoController.dispose();
+    super.dispose();
   }
 }
