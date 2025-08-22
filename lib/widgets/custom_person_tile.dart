@@ -5,9 +5,14 @@ import 'package:primeiro_projeto_flutter/widgets/custom_tile.dart';
 import 'package:primeiro_projeto_flutter/widgets/personDialog.dart';
 
 class CustomPersonTile extends StatelessWidget {
+  final void Function(Person person) onDeletePerson;
   final Person person;
 
-  const CustomPersonTile({super.key, required this.person});
+  const CustomPersonTile({
+    super.key, 
+    required this.person, 
+    required this.onDeletePerson
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,10 @@ class CustomPersonTile extends StatelessWidget {
           context: context, 
           barrierDismissible: false,
           builder: (context) {
-            return PersonDialog(person: person,);
+            return PersonDialog(
+              person: person,
+              onDeletePerson: onDeletePerson,
+            );
           },
         );
       },

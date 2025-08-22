@@ -1,21 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_projeto_flutter/mock/generate_person.dart';
+import 'package:primeiro_projeto_flutter/models/person.dart';
 // import 'package:primeiro_projeto_flutter/models/person.dart';
 import 'package:primeiro_projeto_flutter/widgets/custom_person_tile.dart';
 // import 'package:primeiro_projeto_flutter/widgets/person_listtile.dart';
 
 class PersonList extends StatelessWidget {
-  const PersonList({super.key});
+  final List<Person> person;
+  final void Function(Person person) onDeletePerson;
+  const PersonList({
+    super.key, 
+    required this.person,
+    required this.onDeletePerson
+  });
 
   @override
   Widget build(BuildContext context) {
-    final person = generatePerson(20);
+    if(person.isEmpty){
+      return Center(
+        child: Text(
+          "Nenhuma pessoa cadastrada!",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 18
+          ),
+        ),
+      );
+    }
 
     return ListView.builder(
       itemCount: person.length,
       itemBuilder: (context,  index) {
         // return PersonListTile(person: person[index]);
-        return CustomPersonTile(person: person[index]);
+        return CustomPersonTile(
+          person: person[index],
+          onDeletePerson: onDeletePerson,
+        );
       },
     );
   }

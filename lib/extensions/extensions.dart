@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 extension ToPeso on double {
   String toPeso() {
-    return "${toStringAsFixed(2)} kg";
+    return "${toStringAsFixed(1)} kg";
   }
 }
 

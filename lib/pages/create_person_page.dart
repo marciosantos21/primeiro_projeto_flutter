@@ -51,7 +51,7 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                 style: TextStyle(color: Colors.black),
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: [
-                  FilteringTextInputFormatter.allow(RegExp(r'^\d+[.]?\d{0,2}'))
+                  FilteringTextInputFormatter.allow(RegExp(r'^\d+[.]?\d{0,1}'))
                 ],
                 validator: (value) {
                   if(value?.isEmpty == true){
@@ -102,6 +102,8 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                             altura: int.parse(alturaController.text), 
                             peso: double.parse(pesoController.text),
                           );
+
+                          Navigator.of(context).pop(createPerson);
                         }
                       },  
                       child: Text("Salvar")
