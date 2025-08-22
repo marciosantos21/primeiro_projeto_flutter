@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primeiro_projeto_flutter/controllers/person_controller.dart';
 import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
 import 'package:primeiro_projeto_flutter/models/create_person_dto.dart';
 import 'package:primeiro_projeto_flutter/models/person.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Person> personList = [];
+  final PersonController personController = PersonController();
   
   @override
   Widget build(BuildContext context) {
@@ -23,10 +24,9 @@ class _HomePageState extends State<HomePage> {
         title: Text("Meu primeiro App"),
       ),
       body: PersonList(
-        person: personList,
+        person: personController.personList,
         onDeletePerson: (person) {
-          // print("Deletando $person");
-          personList.remove(person);
+          personController.removePerson(person);
           setState(() { });
         },
       ),
@@ -37,14 +37,7 @@ class _HomePageState extends State<HomePage> {
 
           if(result != null) {
             final personDto = result as CreatePersonDto;
-            final personConfig = Person(
-              id: personList.length + 1, 
-              nome: personDto.nome, 
-              altura: personDto.altura, 
-              peso: personDto.peso
-            );
-
-            personList.add(personConfig);    
+            personController.addPerson(personDto);
             setState(() { });      
           }
           // print("result $result");
