@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:primeiro_projeto_flutter/controllers/person_controller.dart';
 import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
 import 'package:primeiro_projeto_flutter/models/person.dart';
 import 'package:primeiro_projeto_flutter/widgets/default_dialog_container.dart';
 
 class PersonDialog extends StatelessWidget {
   final Person person;
-  final void Function(Person person) onDeletePerson;
 
   const PersonDialog({
     super.key,
     required this.person,
-    required this.onDeletePerson,
   });
 
   @override
   Widget build(BuildContext context) {
+    final personController = GetIt.instance<PersonController>();
     final gapHeight = SizedBox(height: 8);
 
     return AlertDialog(
@@ -24,8 +25,8 @@ class PersonDialog extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () { 
+                personController.removePerson(person);
                 Navigator.of(context).pop();
-                onDeletePerson(person);
               }, 
               child: Text(
                 "Excluir",

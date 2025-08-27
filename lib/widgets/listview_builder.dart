@@ -7,11 +7,9 @@ import 'package:primeiro_projeto_flutter/widgets/custom_person_tile.dart';
 
 class PersonList extends StatelessWidget {
   final List<Person> person;
-  final void Function(Person person) onDeletePerson;
   const PersonList({
     super.key, 
     required this.person,
-    required this.onDeletePerson
   });
 
   @override
@@ -34,7 +32,6 @@ class PersonList extends StatelessWidget {
         // return PersonListTile(person: person[index]);
         return CustomPersonTile(
           person: person[index],
-          onDeletePerson: onDeletePerson,
         );
       },
     );

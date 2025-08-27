@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primeiro_projeto_flutter/dependencies/injector.dart';
 // import 'package:primeiro_projeto_flutter/pages/home_page.dart';
 import 'package:primeiro_projeto_flutter/routes/router.dart';
 import 'package:primeiro_projeto_flutter/routes/routes.dart';
@@ -7,6 +8,7 @@ import 'package:primeiro_projeto_flutter/routes/routes.dart';
 // import 'package:primeiro_projeto_flutter/widgets/person_listtile.dart';
 
 void main() {
+  injector();
   runApp(const MyApp());
 }
 

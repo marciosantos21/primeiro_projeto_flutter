@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:primeiro_projeto_flutter/controllers/person_controller.dart';
 import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
 import 'package:primeiro_projeto_flutter/models/create_person_dto.dart';
@@ -15,7 +16,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final PersonController personController = PersonController();
+  final PersonController personController = GetIt.instance();
+
+  @override
+  void initState() {
+    personController.addListener(() {
+      setState(() { });
+    });
+    super.initState();
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -25,10 +34,6 @@ class _HomePageState extends State<HomePage> {
       ),
       body: PersonList(
         person: personController.personList,
-        onDeletePerson: (person) {
-          personController.removePerson(person);
-          setState(() { });
-        },
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 203, 232, 255),
@@ -38,18 +43,7 @@ class _HomePageState extends State<HomePage> {
           if(result != null) {
             final personDto = result as CreatePersonDto;
             personController.addPerson(personDto);
-            setState(() { });      
           }
-          // print("result $result");
-          // context.pushNamed(Routes.createPersonPage);
-          // Navigator.of(context).pushAndRemoveUntil(
-          //   MaterialPageRoute(
-          //     builder: (context) {
-          //       return NewPage();
-          //     },
-          //   ),
-          //   (route) => false,
-          // );
         },
         child: Icon(
           Icons.navigate_next,
