@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:primeiro_projeto_flutter/controllers/person_controller.dart';
 import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
 import 'package:primeiro_projeto_flutter/models/person.dart';
-import 'package:primeiro_projeto_flutter/widgets/default_dialog_container.dart';
+import 'package:primeiro_projeto_flutter/widgets/core/default_dialog_container.dart';
 
 class PersonDialog extends StatelessWidget {
   final Person person;

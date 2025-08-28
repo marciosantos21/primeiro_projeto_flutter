@@ -6,7 +6,7 @@ import 'package:primeiro_projeto_flutter/models/create_person_dto.dart';
 import 'package:primeiro_projeto_flutter/models/person.dart';
 // import 'package:primeiro_projeto_flutter/pages/create_person_page.dart';
 import 'package:primeiro_projeto_flutter/routes/routes.dart';
-import 'package:primeiro_projeto_flutter/widgets/listview_builder.dart';
+import 'package:primeiro_projeto_flutter/widgets/person/listview_builder.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -20,9 +20,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    personController.addListener(() {
-      setState(() { });
-    });
     super.initState();
   }
   
@@ -32,18 +29,18 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Meu primeiro App"),
       ),
-      body: PersonList(
-        person: personController.personList,
+      body: ListenableBuilder(
+        listenable: personController,
+        builder: (context, child) {
+          return PersonList(
+            person: personController.personList,
+          );
+        }
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color.fromARGB(255, 203, 232, 255),
-        onPressed: () async {
-          final result = await Navigator.of(context).pushNamed(Routes.createPersonPage);
-
-          if(result != null) {
-            final personDto = result as CreatePersonDto;
-            personController.addPerson(personDto);
-          }
+        onPressed: () {
+          Navigator.of(context).pushNamed(Routes.createPersonPage);
         },
         child: Icon(
           Icons.navigate_next,
@@ -52,5 +49,10 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }

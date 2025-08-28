@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:primeiro_projeto_flutter/mock/generate_person.dart';
 import 'package:primeiro_projeto_flutter/models/person.dart';
 // import 'package:primeiro_projeto_flutter/models/person.dart';
-import 'package:primeiro_projeto_flutter/widgets/custom_person_tile.dart';
+import 'package:primeiro_projeto_flutter/widgets/person/custom_person_tile.dart';
 // import 'package:primeiro_projeto_flutter/widgets/person_listtile.dart';
 
 class PersonList extends StatelessWidget {

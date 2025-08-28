@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primeiro_projeto_flutter/widgets/stateful_widget.dart';
+import 'package:primeiro_projeto_flutter/widgets/core/stateful_widget.dart';
 
 class MeuStatelessWidget extends StatefulWidget {
   const MeuStatelessWidget({super.key});

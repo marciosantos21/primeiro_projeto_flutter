@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
+import 'package:primeiro_projeto_flutter/controllers/person_controller.dart';
 import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
 import 'package:primeiro_projeto_flutter/models/create_person_dto.dart';
 
@@ -16,7 +18,7 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
   final pesoController = TextEditingController();
   final alturaController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-
+  final PersonController personController = GetIt.instance();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,7 +105,8 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                             peso: double.parse(pesoController.text),
                           );
 
-                          Navigator.of(context).pop(createPerson);
+                          personController.addPerson(createPerson);
+                          Navigator.of(context).pop();
                         }
                       },  
                       child: Text("Salvar")
