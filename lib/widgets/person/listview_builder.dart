@@ -19,7 +19,6 @@ class PersonList extends StatelessWidget {
         child: Text(
           "Nenhuma pessoa cadastrada!",
           style: TextStyle(
-            color: Colors.black,
             fontSize: 18
           ),
         ),

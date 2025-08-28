@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_projeto_flutter/routes/router.dart';
 import 'package:primeiro_projeto_flutter/routes/routes.dart';
+import 'package:primeiro_projeto_flutter/themes/themes.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -11,15 +12,8 @@ class MyApp extends StatelessWidget {
       initialRoute: Routes.initialRoute,
       routes: routes,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        useMaterial3: false,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        textTheme: TextTheme(
-          bodyMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          titleMedium: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
-        ),
-      ),
-      // home: HomePage(),
+      // theme: lightTheme,
+      theme: darkTheme,
     );
   }
 }

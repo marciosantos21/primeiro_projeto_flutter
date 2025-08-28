@@ -33,7 +33,6 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
             children: [
               TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                style: TextStyle(color: Colors.black),
                 validator: (value) {
                   if(value?.isEmpty == true){
                     return "Por favor, preencha o nome";
@@ -50,7 +49,6 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
               gap,
               TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                style: TextStyle(color: Colors.black),
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
                 inputFormatters: [
                   FilteringTextInputFormatter.allow(RegExp(r'^\d+[.]?\d{0,1}'))
@@ -76,7 +74,6 @@ class _CreatePersonPageState extends State<CreatePersonPage> {
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
                 ],
-                style: TextStyle(color: Colors.black),
                 validator: (value) {
                   if(value?.isEmpty == true){
                     return "Por favor, preencha o altura";
