@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:primeiro_projeto_flutter/controllers/person_controller.dart';
-import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
-import 'package:primeiro_projeto_flutter/models/create_person_dto.dart';
-import 'package:primeiro_projeto_flutter/models/person.dart';
+import 'package:primeiro_projeto_flutter/controllers/theme_controller.dart';
+// import 'package:primeiro_projeto_flutter/extensions/extensions.dart';
+// import 'package:primeiro_projeto_flutter/models/create_person_dto.dart';
+// import 'package:primeiro_projeto_flutter/models/person.dart';
 // import 'package:primeiro_projeto_flutter/pages/create_person_page.dart';
 import 'package:primeiro_projeto_flutter/routes/routes.dart';
 import 'package:primeiro_projeto_flutter/widgets/person/listview_builder.dart';
@@ -16,6 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final ThemeController themeController = GetIt.instance();
   final PersonController personController = GetIt.instance();
 
   @override
@@ -28,6 +30,25 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Meu primeiro App"),
+      ),
+      drawer: Drawer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              children: [
+                Text("Modo escuro"),
+                Switch(
+                  value: themeController.darkTheme,
+                  onChanged: (value) {
+                    themeController.toogleTheme(value);
+                  }
+                ),
+              ],
+            ),
+            
+          ],
+        ),
       ),
       body: ListenableBuilder(
         listenable: personController,
