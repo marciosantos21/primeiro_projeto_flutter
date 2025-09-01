@@ -5,6 +5,8 @@ class ThemeController extends ChangeNotifier {
   final SharedPreferences sharedPreferences;
   bool darkTheme = false;
 
+  ValueNotifier<String> mensagemNotifier = ValueNotifier("");
+
   ThemeController({
     required this.sharedPreferences
   });
@@ -12,6 +14,7 @@ class ThemeController extends ChangeNotifier {
   void toogleTheme (bool value) async {
     darkTheme = !darkTheme;
     await sharedPreferences.setBool("theme", darkTheme);
+    mensagemNotifier.value = darkTheme ? "Modo dark ativado com sucesso" : "Modo light ativado com sucesso";
     notifyListeners();
   }
 

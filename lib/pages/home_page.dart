@@ -22,7 +22,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    personController.mensagemNotifier.addListener(_onPessonMensage);
+    themeController.mensagemNotifier.addListener(_onThemeMensage);
     super.initState();
+  }
+
+  void _onPessonMensage() {
+    print("Mensagem: ${personController.mensagemNotifier.value}");
+  }
+
+  void _onThemeMensage() {
+    print("Mensagem theme: ${themeController.mensagemNotifier.value}");
   }
   
   @override
@@ -74,6 +84,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
+    personController.mensagemNotifier.removeListener(_onPessonMensage);
+    themeController.mensagemNotifier.removeListener(_onThemeMensage);
     super.dispose();
   }
 }

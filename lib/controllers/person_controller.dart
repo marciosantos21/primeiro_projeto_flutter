@@ -6,6 +6,8 @@ class PersonController extends ChangeNotifier{
   List<Person> _personList = [];
   List<Person> get personList => _personList;
 
+  ValueNotifier<String> mensagemNotifier = ValueNotifier("");
+  
   void addPerson(CreatePersonDto createPerson) {
     final person = Person(
       id: _personList.length + 1, 
@@ -15,11 +17,13 @@ class PersonController extends ChangeNotifier{
     );
 
     _personList.add(person);
+    mensagemNotifier.value = "Pessoa adicionada com sucesso.";
     notifyListeners();
   }
 
   void removePerson(Person person) {
     _personList.remove(person);
+    mensagemNotifier.value = "Pessoa removida com sucesso.";
     notifyListeners();
   }
 }
