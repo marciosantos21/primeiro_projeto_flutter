@@ -5,13 +5,24 @@ import 'package:primeiro_projeto_flutter/routes/router.dart';
 import 'package:primeiro_projeto_flutter/routes/routes.dart';
 import 'package:primeiro_projeto_flutter/themes/themes.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final ThemeController themeController = GetIt.instance();
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  final ThemeController themeController = GetIt.instance();
+  
+  @override
+  void initState() {
+    super.initState();
+    themeController.getTheme();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return ListenableBuilder(
       listenable: themeController,
       builder: (context, child) {
