@@ -28,11 +28,23 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onPessonMensage() {
-    print("Mensagem: ${personController.mensagemNotifier.value}");
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.green,
+        content: Text(personController.mensagemNotifier.value,),
+      ),
+    );
   }
 
   void _onThemeMensage() {
-    print("Mensagem theme: ${themeController.mensagemNotifier.value}");
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.green,
+        content: Text(themeController.mensagemNotifier.value)
+      )
+    );
   }
   
   @override
