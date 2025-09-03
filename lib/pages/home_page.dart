@@ -7,6 +7,7 @@ import 'package:primeiro_projeto_flutter/controllers/theme_controller.dart';
 // import 'package:primeiro_projeto_flutter/models/person.dart';
 // import 'package:primeiro_projeto_flutter/pages/create_person_page.dart';
 import 'package:primeiro_projeto_flutter/routes/routes.dart';
+import 'package:primeiro_projeto_flutter/states/message_states.dart';
 import 'package:primeiro_projeto_flutter/widgets/person/listview_builder.dart';
 
 class HomePage extends StatefulWidget {
@@ -29,22 +30,44 @@ class _HomePageState extends State<HomePage> {
 
   void _onPessonMensage() {
     ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.green,
-        content: Text(personController.mensagemNotifier.value,),
-      ),
-    );
+    final value = personController.mensagemNotifier.value;
+    
+    if(value is SuccessMessage){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text(value.message),
+        ),
+      );
+    } else if (value is ErrorMessage) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text(value.message),
+        ),
+      );
+    }
   }
 
   void _onThemeMensage() {
     ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.green,
-        content: Text(themeController.mensagemNotifier.value)
-      )
-    );
+    final value = themeController.mensagemNotifier.value;
+
+    if(value is SuccessMessage){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text(value.message)
+        )
+      );
+    }else if(value is ErrorMessage){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.red,
+          content: Text(value.message)
+        ),
+      );
+    }
   }
   
   @override
